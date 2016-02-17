@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-
+<?php if ( is_home() ) : ?>
       <section class="row">
         <div class="jumbotron">
           <h1><?php bloginfo( 'name' ); ?></h1>
@@ -23,7 +23,7 @@
                 }
                 ?>
                 <div class="caption">
-                    <h3 class="text-center"><?php the_title(); ?></h3>
+                    <a href="<?php the_permalink(); ?>"><h3 class="text-center"><?php the_title(); ?></h3></a>
                     <p class="text-justify">
                       <?php substr(the_excerpt(), 0 , 200 ) ?>
                     </p>
@@ -37,5 +37,19 @@
           endif;
          ?>
       </section>
+<?php elseif ( is_single() || is_page() ) :
+  if ( have_posts() ) : while ( have_posts() ) : the_post();
+  ?>
+  <section class="row">
+    <article class="col-md-12">
+      <h1><?php the_title(); ?></h1>
+      <?php the_content(); ?>
+    </article>
+  </section>
+  <?php endwhile; ?>
+  <?php else: ?>
+    <?php _e('Lo sentimos, no hemos encontrado el contenido que buscaba.'); ?>
+  <?php endif; ?>
+<?php endif; ?>
 
 <?php get_footer(); ?>
