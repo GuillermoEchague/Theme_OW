@@ -1,0 +1,15 @@
+/*
+Theme Name: OpenWebinars
+Theme URI: http://OpenWebinars.net
+Author: José Arcos
+Author URI: http://josearcos.me
+Description: Este es nuestro primer tema en el curso de creación de temas para WordPress
+Version: 0.1
+License: GNU
+Tags: blue, no-sidebar, one-column
+Text Domain: openwebinars
+*/
+
+.articulo {
+  height: 700px;
+}
