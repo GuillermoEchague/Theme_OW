@@ -17,13 +17,14 @@
 </section>
 <section class="row">
   <?php
-    if ( have_posts() ) : while ( have_posts() ) : the_post();
+  $latest_blog_posts = new WP_Query( array( 'posts_per_page' => 4 ) );
+    if ( $latest_blog_posts->have_posts() ) : while ( $latest_blog_posts->have_posts() ) : $latest_blog_posts->the_post();
       ?>
       <article class="articulo col-md-3 col-sm-6">
         <picture class="thumbnail">
           <?php
           if (has_post_thumbnail()) {
-            the_post_thumbnail( array( 242, 200 ) );
+            the_post_thumbnail( array('242', '200') );
           } else {
             ?><img src="http://placekitten.com/g/242/200" alt="" /><?php
           }
@@ -41,7 +42,8 @@
     else :
       __( 'Lo sentimos, no hay entradas que coincidan con su búsqueda.', 'openwebinars' );
     endif;
-   ?>
+    wp_reset_postdata();
+    ?>
 </section>
 
 <?php get_footer(); ?>

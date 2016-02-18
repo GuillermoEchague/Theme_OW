@@ -44,4 +44,12 @@ function ow_register_sidebars() {
 }
 add_action( 'widgets_init', 'ow_register_sidebars' );
 
+/* Dar soporte a imágenes destacadas */
+
+function ow_thumbnails_theme_support() {
+  add_theme_support( 'home_thumbnails' );
+  add_image_size( 'homepage_thum', '242', '200' );
+}
+add_action( 'after_setup_theme', 'ow_thumbnails_theme_support' );
+
  ?>
